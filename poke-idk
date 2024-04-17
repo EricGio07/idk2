@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Definizione della struttura Pokemon
+struct Pokemon {
+    char nome[50];
+    int salute;
+    int attacco;
+    int difesa;
+    char mosse[4][50];
+};
+
+// Funzione per creare un nuovo Pokemon
+struct Pokemon creaPokemon(char nome[], int salute, int attacco, int difesa, char mossa1[], char mossa2[], char mossa3[], char mossa4[]) {
+    struct Pokemon nuovoPokemon;
+    strcpy(nuovoPokemon.nome, nome);
+    nuovoPokemon.salute = salute;
+    nuovoPokemon.attacco = attacco;
+    nuovoPokemon.difesa = difesa;
+    strcpy(nuovoPokemon.mosse[0], mossa1);
+    strcpy(nuovoPokemon.mosse[1], mossa2);
+    strcpy(nuovoPokemon.mosse[2], mossa3);
+    strcpy(nuovoPokemon.mosse[3], mossa4);
+    return nuovoPokemon;
+}
+
+// Funzione per stampare le informazioni di un Pokemon
+void stampaPokemon(struct Pokemon pokemon) {
+    printf("Nome: %s\n", pokemon.nome);
+    printf("Salute: %d\n", pokemon.salute);
+    printf("Attacco: %d\n", pokemon.attacco);
+    printf("Difesa: %d\n", pokemon.difesa);
+    printf("Mosse:\n");
+    for (int i = 0; i < 4; i++) {
+        printf("    %s\n", pokemon.mosse[i]);
+    }
+}
+
+int main() {
+    // Creazione di un nuovo Pokemon
+    struct Pokemon Pikachu = creaPokemon("Pikachu", 35, 55, 40, "Tuonopugno", "Tuono", "Fulmine", "Scossa");
+    
+    // Stampa delle informazioni del Pokemon
+    printf("Informazioni di Pikachu:\n");
+    stampaPokemon(Pikachu);
+    
+    return 0;
+}
